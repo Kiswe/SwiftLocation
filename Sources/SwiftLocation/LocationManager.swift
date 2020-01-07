@@ -30,8 +30,8 @@ public class LocationManager: NSObject {
     // MARK: - Public Properties -
     
     /// This is the singleton to manage location manager subscriptions.
-    public static let shared = LocationManager()
-    
+    public static var shared = LocationManager()
+
     /// Return the current authorization state.
     public static var state: State {
         switch (CLLocationManager.locationServicesEnabled(), CLLocationManager.authorizationStatus()) {
@@ -155,8 +155,8 @@ public class LocationManager: NSObject {
     }
     
     // MARK: - Initialization -
-    
-    internal override init() {
+
+    public override init() {
         queueLocationRequests = LocationRequestSet()
         queueBeaconsRequests = BeaconsRequestSet()
         queueGeocoderRequests = GeocoderRequestSet()
